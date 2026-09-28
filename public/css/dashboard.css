@@ -1,0 +1,807 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-color: #fffef0;
+
+    color: #3b2919;
+
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+
+    width: 100%;
+
+    height: 110px;
+
+    background-color: #a95708;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 45px;
+
+    gap: 30px;
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+
+    width: 235px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+
+    color: white;
+
+}
+
+
+.logo-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 38px;
+
+}
+
+
+.logo-text h1 {
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    margin-bottom: 5px;
+
+}
+
+
+.logo-text span {
+
+    font-size: 6px;
+
+    letter-spacing: 2px;
+
+    color: white;
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-container {
+
+    flex: 1;
+
+    height: 52px;
+
+    max-width: 900px;
+
+    background-color: #fffef0;
+
+    border-radius: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 20px;
+
+}
+
+
+.search-icon {
+
+    font-size: 33px;
+
+    color: #6f665d;
+
+    margin-right: 10px;
+
+    line-height: 1;
+
+}
+
+
+.search-container input {
+
+    width: 100%;
+
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    font-size: 17px;
+
+    color: #3b2919;
+
+}
+
+
+.search-container input::placeholder {
+
+    color: #aaa397;
+
+}
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+.cart {
+
+    position: relative;
+
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+
+    flex-shrink: 0;
+
+}
+
+
+.cart-icon {
+
+    font-size: 28px;
+
+}
+
+
+.cart-number {
+
+    position: absolute;
+
+    top: 0;
+
+    right: -2px;
+
+    width: 17px;
+
+    height: 17px;
+
+    border-radius: 50%;
+
+    background-color: #e5a03b;
+
+    color: white;
+
+    font-size: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+/* =========================================================
+   LOGIN BUTTON
+========================================================= */
+
+.login-button {
+
+    height: 50px;
+
+    padding: 0 18px;
+
+    border: 2px solid white;
+
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+}
+
+
+.login-button:hover {
+
+    background-color: white;
+
+    color: #a95708;
+
+}
+
+
+.login-icon {
+
+    margin-right: 6px;
+
+    font-size: 19px;
+
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.main-layout {
+
+    display: flex;
+
+    width: 100%;
+
+    min-height: calc(100vh - 110px);
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+
+    width: 270px;
+
+    flex-shrink: 0;
+
+    background-color: #f1f1f1;
+
+    padding: 31px 33px;
+
+}
+
+
+.sidebar h2 {
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =========================================================
+   CATEGORY BUTTON
+========================================================= */
+
+.category-button {
+
+    width: 100%;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    border: 2px solid #4b3624;
+
+    border-radius: 9px;
+
+    background-color: #fffef0;
+
+    color: #3b2919;
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+}
+
+
+.category-button:hover {
+
+    background-color: #eadfc8;
+
+}
+
+
+.category-button.active {
+
+    background-color: #432a14;
+
+    border-color: #432a14;
+
+    color: white;
+
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content {
+
+    flex: 1;
+
+    padding: 42px 45px;
+
+    min-width: 0;
+
+}
+
+
+/* =========================================================
+   BANNER
+========================================================= */
+
+.banner {
+
+    width: 100%;
+
+    height: 165px;
+
+    border: 2px solid #34291f;
+
+    background-color: #fffef0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 23px;
+
+}
+
+
+.banner h2 {
+
+    font-size: 52px;
+
+    font-weight: 400;
+
+    color: #000;
+
+}
+
+
+/* =========================================================
+   PRODUCT SECTION
+========================================================= */
+
+.product-section {
+
+    width: 100%;
+
+    margin-bottom: 27px;
+
+}
+
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.section-title {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 17px;
+
+}
+
+
+.section-title h2 {
+
+    font-size: 27px;
+
+    font-weight: 700;
+
+    color: #3b2919;
+
+}
+
+
+.section-title a {
+
+    color: #3b352e;
+
+    font-size: 16px;
+
+    text-decoration: underline;
+
+}
+
+
+.section-title a:hover {
+
+    color: #a95708;
+
+}
+
+
+/* =========================================================
+   PRODUCT GRID
+========================================================= */
+
+.product-grid {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+
+    gap: 43px;
+
+}
+
+
+/* =========================================================
+   PRODUCT CARD
+========================================================= */
+
+.product-card {
+
+    width: 100%;
+
+    min-width: 0;
+
+    background-color: #fffef0;
+
+    border: 2px solid #352b23;
+
+    padding: 10px;
+
+    transition: transform 0.2s ease;
+
+}
+
+
+.product-card:hover {
+
+    transform: translateY(-3px);
+
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE
+========================================================= */
+
+.product-image {
+
+    width: 100%;
+
+    height: 130px;
+
+    border: 2px solid #352b23;
+
+    background-color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+}
+
+
+.product-image span {
+
+    font-size: 15px;
+
+    color: #333;
+
+}
+
+
+.product-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+
+/* =========================================================
+   PRODUCT INFORMATION
+========================================================= */
+
+.product-information {
+
+    padding-top: 7px;
+
+}
+
+
+.product-information h3 {
+
+    font-size: 13px;
+
+    font-weight: normal;
+
+    color: #3b2919;
+
+    margin-bottom: 3px;
+
+}
+
+
+.product-information p {
+
+    font-size: 13px;
+
+    color: #3b2919;
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .navbar {
+
+        padding: 0 25px;
+
+        gap: 20px;
+
+    }
+
+
+    .logo {
+
+        width: 200px;
+
+    }
+
+
+    .content {
+
+        padding: 35px 30px;
+
+    }
+
+
+    .product-grid {
+
+        gap: 20px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .sidebar {
+
+        width: 220px;
+
+        padding-left: 20px;
+
+        padding-right: 20px;
+
+    }
+
+
+    .product-grid {
+
+        grid-template-columns: repeat(3, 1fr);
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+
+        height: auto;
+
+        padding: 20px;
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .logo {
+
+        width: auto;
+
+    }
+
+
+    .search-container {
+
+        order: 5;
+
+        width: 100%;
+
+        max-width: none;
+
+    }
+
+
+    .main-layout {
+
+        flex-direction: column;
+
+    }
+
+
+    .sidebar {
+
+        width: 100%;
+
+        padding: 15px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+    }
+
+
+    .sidebar h2 {
+
+        display: none;
+
+    }
+
+
+    .category-button {
+
+        margin: 0;
+
+        height: 45px;
+
+        font-size: 14px;
+
+    }
+
+
+    .content {
+
+        padding: 25px 15px;
+
+    }
+
+
+    .banner {
+
+        height: 130px;
+
+    }
+
+
+    .banner h2 {
+
+        font-size: 36px;
+
+    }
+
+
+    .product-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 15px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 450px) {
+
+    .login-button {
+
+        padding: 0 10px;
+
+        font-size: 12px;
+
+    }
+
+
+    .product-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
