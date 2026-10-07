@@ -612,3 +612,96 @@ body {
     }
 
 }
+
+
+/* =========================================================
+   AKUN & PESAN
+========================================================= */
+
+summary.login-button {
+    list-style: none;
+    cursor: pointer;
+}
+
+summary.login-button::-webkit-details-marker {
+    display: none;
+}
+
+.akun {
+    position: relative;
+}
+
+.menu-akun {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    min-width: 180px;
+    background: #fffef0;
+    border: 2px solid #4b3624;
+    border-radius: 10px;
+    padding: 6px;
+    z-index: 10;
+}
+
+.menu-akun a {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: #3b2919;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.menu-akun a:hover {
+    background: #f3ecc4;
+}
+
+.flash-sukses {
+    background: #e3f4d8;
+    color: #2e6b1a;
+    border-radius: 10px;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.flash-sukses a {
+    color: #2e6b1a;
+    margin-left: 10px;
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   TOMBOL KEMBALI (ATAS)
+========================================================= */
+
+.detail-topbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 25px;
+}
+
+.detail-topbar .breadcrumb {
+    margin-bottom: 0;
+}
+
+.tombol-kembali {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border: 2px solid #a95708;
+    border-radius: 8px;
+    background: #fffef0;
+    color: #a95708;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.tombol-kembali:hover {
+    background: #f3ecc4;
+}

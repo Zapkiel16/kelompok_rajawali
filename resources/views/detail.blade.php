@@ -23,30 +23,56 @@
                 SnackinAja
             </a>
 
-            <div class="search-box">
+            <form class="search-box" action="{{ url('/') }}" method="GET" role="search">
                 <input
                     type="text"
+                    name="q"
                     placeholder="Cari makanan atau minuman..."
                 >
 
-                <button type="button">
+                <button type="submit">
                     🔍
                 </button>
-            </div>
+            </form>
 
         </div>
 
 
         <div class="navbar-right">
 
-            <a href="#" class="cart">
+            <a href="{{ route('keranjang.index') }}" class="cart">
                 🛒
-                <span>Keranjang</span>
+                <span>
+                    Keranjang
+                    @if ($jumlahItem > 0)
+                        ({{ $jumlahItem }})
+                    @endif
+                </span>
             </a>
 
-            <a href="#" class="login-button">
-                Login
-            </a>
+            @if (auth()->check() || session()->has('tamu'))
+
+                <details class="akun">
+                    <summary class="login-button">
+                        {{ auth()->check() ? auth()->user()->name : session('tamu.nama') }}
+                    </summary>
+
+                    <div class="menu-akun">
+                        @if (auth()->check())
+                            <a href="{{ route('profil.index') }}">Profil</a>
+                        @endif
+                        <a href="{{ route('pesanan.index') }}">Pesanan Saya</a>
+                        <a href="{{ route('logout.konfirmasi') }}">Keluar</a>
+                    </div>
+                </details>
+
+            @else
+
+                <a href="{{ route('masuk') }}" class="login-button">
+                    Masuk
+                </a>
+
+            @endif
 
         </div>
 
@@ -59,9 +85,15 @@
 
     <main class="detail-container">
 
-        <!-- Breadcrumb -->
+        <!-- Tombol kembali + Breadcrumb -->
 
-        <div class="breadcrumb">
+        <div class="detail-topbar">
+
+            <a href="{{ url('/') }}" class="tombol-kembali">
+                ← Kembali
+            </a>
+
+            <div class="breadcrumb">
 
             <a href="{{ url('/') }}">
                 Home
@@ -74,6 +106,16 @@
             </span>
 
         </div>
+
+        </div>
+
+
+        @if (session('sukses'))
+            <div class="flash-sukses">
+                {{ session('sukses') }}
+                <a href="{{ route('keranjang.index') }}">Lihat keranjang</a>
+            </div>
+        @endif
 
 
         <!-- Detail Card -->
@@ -181,15 +223,15 @@
 
                         <div class="quantity-control">
 
-                            <button type="button">
+                            <button type="button" data-qty="-1">
                                 −
                             </button>
 
-                            <span>
+                            <span id="qty-text">
                                 1
                             </span>
 
-                            <button type="button">
+                            <button type="button" data-qty="1">
                                 +
                             </button>
 
@@ -203,7 +245,7 @@
                     ========================== -->
 
                     <form
-                        action="#"
+                        action="{{ route('menu.tambah') }}"
                         method="POST"
                         class="cart-form"
                     >
@@ -212,13 +254,14 @@
 
                         <input
                             type="hidden"
-                            name="product_id"
+                            name="id"
                             value="{{ $id }}"
                         >
 
                         <input
                             type="hidden"
-                            name="quantity"
+                            name="jumlah"
+                            id="qty-input"
                             value="1"
                         >
 
@@ -259,6 +302,25 @@
         </div>
 
     </main>
+
+    @if ($product['stock'] > 0)
+        <script>
+            (function () {
+                var max = {{ min(99, (int) $product['stock']) }};
+                var jumlah = 1;
+                var teks = document.getElementById('qty-text');
+                var input = document.getElementById('qty-input');
+
+                document.querySelectorAll('[data-qty]').forEach(function (tombol) {
+                    tombol.addEventListener('click', function () {
+                        jumlah = Math.max(1, Math.min(max, jumlah + parseInt(tombol.dataset.qty, 10)));
+                        teks.textContent = jumlah;
+                        input.value = jumlah;
+                    });
+                });
+            })();
+        </script>
+    @endif
 
 </body>
 </html>

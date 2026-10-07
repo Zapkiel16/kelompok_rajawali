@@ -2,66 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\ProductCatalog;
+use App\Services\Keranjang;
+use Illuminate\Http\Request;
+
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request, Keranjang $keranjang)
     {
-        $snacks = [
-            [
-                'name' => 'Item 1',
-                'price' => 'Rp 16.000',
-                'image' => null,
-            ],
-            [
-                'name' => 'Item 2',
-                'price' => 'Rp 12.000',
-                'image' => null,
-            ],
-            [
-                'name' => 'Item 3',
-                'price' => 'Rp 15.000',
-                'image' => null,
-            ],
-            [
-                'name' => 'Item 4',
-                'price' => 'Rp 10.000',
-                'image' => null,
-            ],
-            [
-                'name' => 'Item 5',
-                'price' => 'Rp 14.000',
-                'image' => null,
-            ],
-        ];
+        $q = trim((string) $request->query('q', ''));
 
-        $drinks = [
-            [
-                'name' => 'Drink 1',
-                'price' => 'Rp 5.000',
-                'image' => null,
-            ],
-            [
-                'name' => 'Drink 2',
-                'price' => 'Rp 7.000',
-                'image' => null,
-            ],
-            [
-                'name' => 'Drink 3',
-                'price' => 'Rp 12.000',
-                'image' => null,
-            ],
-            [
-                'name' => 'Drink 4',
-                'price' => 'Rp 15.000',
-                'image' => null,
-            ],
-            [
-                'name' => 'Drink 5',
-                'price' => 'Rp 13.000',
-                'image' => null,
-            ],
-        ];
+        // null = semua kategori
+        $kategori = $request->query('kategori');
+        if (! in_array($kategori, [ProductCatalog::SNACK, ProductCatalog::DRINK], true)) {
+            $kategori = null;
+        }
 
-        return view('dashboard', compact('snacks', 'drinks'));
+        $cari = fn (array $produk) => $q === ''
+            ? $produk
+            : array_values(array_filter(
+                $produk,
+                fn (array $p) => str_contains(mb_strtolower($p['name']), mb_strtolower($q))
+            ));
+
+        return view('dashboard', [
+            'snacks' => $kategori === ProductCatalog::DRINK ? [] : $cari(ProductCatalog::byType(ProductCatalog::SNACK)),
+            'drinks' => $kategori === ProductCatalog::SNACK ? [] : $cari(ProductCatalog::byType(ProductCatalog::DRINK)),
+            'q' => $q,
+            'kategori' => $kategori,
+            'jumlahItem' => count($keranjang->semua()),
+        ]);
     }
 }
