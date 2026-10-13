@@ -8,6 +8,7 @@ use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PesananController;
+<<<<<<< HEAD
 use App\Http\Controllers\StokAdminController;
 use App\Http\Middleware\HarusAdaPemesan;
 use App\Http\Middleware\HarusAdmin;
@@ -15,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
+=======
+use App\Http\Middleware\HarusAdaPemesan;
+use Illuminate\Support\Facades\Route;
+>>>>>>> d118139c80da38a1f353785fb9656acd6f5102b9
 
 // Masuk, daftar, lupa password, dan masuk sebagai tamu
 Route::get('/masuk', [AuthController::class, 'formMasuk'])->name('masuk');
@@ -53,6 +58,7 @@ Route::middleware(HarusAdaPemesan::class)->group(function () {
     Route::get('/pesanan', [PesananController::class, 'index'])->name('pesanan.index');
 });
 
+<<<<<<< HEAD
 // Khusus akun admin: CRUD stok produk (termasuk unggah gambar)
 Route::middleware(HarusAdmin::class)->prefix('admin')->group(function () {
     Route::get('/stok', [StokAdminController::class, 'index'])
@@ -114,6 +120,14 @@ Route::middleware('auth')->group(function () {
             ->with('success', 'Profil berhasil diperbarui!');
     })->name('profil.update');
 });
+=======
+// Halaman status: hanya pemilik pesanan yang boleh membuka (dicek di controller)
+Route::get('/checkout/status/{transaksi}', [CheckoutController::class, 'status'])->name('checkout.status');
+
+Route::get('/profil', function () {
+    return view('profil');
+})->name('profil.index');
+>>>>>>> d118139c80da38a1f353785fb9656acd6f5102b9
 
 Route::get('/logout', [LogoutController::class, 'konfirmasi'])->name('logout.konfirmasi');
 Route::post('/logout', [LogoutController::class, 'keluar'])->name('logout');

@@ -72,6 +72,7 @@
         </a>
 
 
+<<<<<<< HEAD
         <!-- Tautan khusus admin agar halaman stok mudah dibuka kembali dari toko -->
         @if (auth()->check() && (bool) auth()->user()->is_admin)
             <a href="{{ route('admin.stok') }}"
@@ -81,6 +82,8 @@
             </a>
         @endif
 
+=======
+>>>>>>> d118139c80da38a1f353785fb9656acd6f5102b9
         <!-- LOGIN -->
         <div class="auth-actions">
 
@@ -97,10 +100,13 @@
 
                         @if (auth()->check())
                             <a href="{{ route('profil.index') }}">Profil</a>
+<<<<<<< HEAD
 
                             @if ((bool) auth()->user()->is_admin)
                                 <a href="{{ route('admin.stok') }}">Kelola Stok</a>
                             @endif
+=======
+>>>>>>> d118139c80da38a1f353785fb9656acd6f5102b9
                         @endif
 
                         <a href="{{ route('pesanan.index') }}">Pesanan Saya</a>

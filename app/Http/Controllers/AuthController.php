@@ -85,11 +85,14 @@ class AuthController extends Controller
         $request->session()->regenerate(); // keranjang di session tetap terbawa
         $this->pemesan->klaimPesananTamu(auth()->user());
 
+<<<<<<< HEAD
         // Admin langsung ke halaman stok
         if (auth()->user()->adalahAdmin()) {
             return redirect()->route('admin.stok');
         }
 
+=======
+>>>>>>> d118139c80da38a1f353785fb9656acd6f5102b9
         // Selalu balik ke dashboard menu utama
         return redirect('/');
     }

@@ -34,6 +34,7 @@ class UserFactory extends Factory
     }
 
     /**
+<<<<<<< HEAD
      * Indicate that the user is an admin.
      */
     public function admin(): static
@@ -44,6 +45,8 @@ class UserFactory extends Factory
     }
 
     /**
+=======
+>>>>>>> d118139c80da38a1f353785fb9656acd6f5102b9
      * Indicate that the model's email address should be unverified.
      */
     public function unverified(): static

@@ -27,6 +27,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+<<<<<<< HEAD
             'is_admin' => 'boolean',
         ];
     }
@@ -43,3 +44,8 @@ class User extends Authenticatable
         return (bool) $this->is_admin;
     }
 }
+=======
+        ];
+    }
+}
+>>>>>>> d118139c80da38a1f353785fb9656acd6f5102b9

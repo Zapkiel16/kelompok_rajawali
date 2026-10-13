@@ -48,9 +48,12 @@
             <div class="menu-akun">
                 @if (auth()->check())
                     <a href="{{ route('profil.index') }}">Profil</a>
+<<<<<<< HEAD
                     @if ((bool) auth()->user()->is_admin)
                         <a href="{{ route('admin.stok') }}">Kelola Stok</a>
                     @endif
+=======
+>>>>>>> d118139c80da38a1f353785fb9656acd6f5102b9
                 @endif
                 <a href="{{ route('pesanan.index') }}">Pesanan Saya</a>
                 <a href="{{ route('logout.konfirmasi') }}">Keluar</a>
